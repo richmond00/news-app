@@ -3,11 +3,11 @@ const { SourceMapDevToolPlugin } = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 const path = require("path");
+const apiMocker = require("connect-api-mocker");
 const webpack = require("webpack");
 
 module.exports = {
     entry: "./src/index.js",
-    mode: "development",
     devtool: false,
     module: {
         rules: [
@@ -38,7 +38,9 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, "./public"),
         port: 3000,
-        hot: true,
+        before: (app) => {
+            app.use(apiMocker("/api", "mocks/api"));
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({ template: "./public/index.html" }),
