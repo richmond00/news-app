@@ -5,6 +5,7 @@ const ESLintPlugin = require("eslint-webpack-plugin");
 const path = require("path");
 const apiMocker = require("connect-api-mocker");
 const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
     entry: "./src/index.js",
@@ -49,5 +50,6 @@ module.exports = {
         new SourceMapDevToolPlugin(),
         new webpack.BannerPlugin({ banner: new Date().toLocaleString() }),
         new ESLintPlugin(),
+        new Dotenv(),
     ],
 };
