@@ -1,5 +1,6 @@
 import React from "react";
 import { render } from "react-dom";
+import { HashRouter } from "react-router-dom";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -16,8 +17,10 @@ const store = createStore(rootReducer, applyMiddleware(...middleware));
 sagaMiddleware.run(rootSaga);
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <HashRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </HashRouter>,
     document.getElementById("root")
 );

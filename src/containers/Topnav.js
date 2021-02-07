@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Search from "../components/Search";
 import LanguagePicker from "../components/LanguagePicker";
 
@@ -8,8 +9,12 @@ const Topnav = () => {
             <nav className="topnav">
                 <div className="topnav__logo">Logo</div>
                 <ul className="topnav__items">
-                    <li className="topnav__item">Real Time</li>
-                    <li className="topnav__item">Most Viewed</li>
+                    <li className="topnav__item">
+                        <Link to="realtime">Real Time</Link>
+                    </li>
+                    <li className="topnav__item">
+                        <Link to="mostviewed">Most Viewed</Link>
+                    </li>
                     <li className="topnav__item">
                         <LanguagePicker />
                     </li>
