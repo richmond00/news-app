@@ -1,9 +1,11 @@
 import React from "react";
-import RealTime from "./containers/RealTime";
+import Topnav from "./Topnav";
+import RealTime from "./RealTime";
 
 const App = () => {
     return (
         <div className="container">
+            <Topnav />
             <RealTime />
         </div>
     );

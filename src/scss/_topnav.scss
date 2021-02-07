@@ -1,0 +1,20 @@
+.topnav {
+    display: flex;
+    font-size: 1.6rem;
+    padding: 3rem;
+
+    &__logo {
+        margin-right: auto;
+
+    }
+
+    &__items {
+        list-style: none;
+        display: flex;
+    }
+
+    &__item {
+        margin: 0 3rem 0 3rem;
+        cursor: pointer;
+    }
+}
