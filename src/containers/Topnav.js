@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Search from "../components/Search";
+import SearchInput from "../components/SearchInput";
 import LanguagePicker from "../components/LanguagePicker";
 
 const Topnav = () => {
@@ -19,7 +19,7 @@ const Topnav = () => {
                         <LanguagePicker />
                     </li>
                     <li className="topnav__item">
-                        <Search />
+                        <SearchInput />
                     </li>
                 </ul>
             </nav>

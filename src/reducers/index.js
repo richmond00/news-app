@@ -1,16 +1,16 @@
 import { combineReducers } from "redux";
 
-const apiReducer = (state = {}, action) => {
+const articleReducer = (state = {}, action) => {
     switch (action.type) {
         case "received":
-            return action.payload;
+            return { [action.meta]: action.payload };
         default:
             return state;
     }
 };
 
 const rootReducer = combineReducers({
-    api: apiReducer,
+    article: articleReducer,
 });
 
 export default rootReducer;

@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const RealTime = () => {
     const dispatch = useDispatch();
+    const realtime = useSelector((state) => state.article.realtime);
 
     useEffect(() => {
         dispatch({ type: "realtime/callApi" });
@@ -10,7 +11,11 @@ const RealTime = () => {
 
     return (
         <div>
-            <h4>Real Time Articles</h4>
+            <h4>realtime</h4>
+            {realtime &&
+                realtime.map((article) => {
+                    return <div key={article.slug_name}>{article.title}</div>;
+                })}
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import { put, takeLatest, call, all } from "redux-saga/effects";
 
-const URL = "http://localhost:3000/api/realtime";
+const API_URL_REALTIME = `${process.env.API_URL_ROOT}/api/realtime`;
+const API_URL_MOSTVIEWED = `${process.env.API_URL_ROOT}/api/mostviewed`;
 
 const myFetch = async (url) => {
     const promise = fetch(url);
@@ -10,13 +11,20 @@ const myFetch = async (url) => {
     return data;
 };
 
-function* fetchNews() {
-    const result = yield call(myFetch, URL);
+function* fetctRealTime(action) {
+    const data = yield call(myFetch, API_URL_REALTIME);
+    const dataName = action.type.split("/")[0];
+    yield put({ type: "received", meta: dataName, payload: data.results });
+}
+
+function* fetchMostViewed() {
+    const result = yield call(myFetch, API_URL_MOSTVIEWED);
     yield put({ type: "received", payload: result });
 }
 
 function* actionWatcher() {
-    yield takeLatest("realtime/callApi", fetchNews);
+    yield takeLatest("realtime/callApi", fetctRealTime);
+    yield takeLatest("mostviewed/callApi", fetchMostViewed);
 }
 
 export default function* rootSaga() {

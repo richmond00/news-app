@@ -1,8 +1,8 @@
-export const getRealTime = () => ({
+export const fetchRealTimeData = () => ({
     type: "realtime/callApi",
+    meta: "realtime",
 });
 
-export const getSearch = () => ({
-    type: "search/callApi",
-    payload: {},
+export const fetchMostViewedData = () => ({
+    type: "mostviewed/callApi",
 });
