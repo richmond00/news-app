@@ -5,4 +5,5 @@ export const fetchRealTimeData = () => ({
 
 export const fetchMostViewedData = () => ({
     type: "mostviewed/callApi",
+    meta: "mostviewed",
 });

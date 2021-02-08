@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 const articleReducer = (state = {}, action) => {
     switch (action.type) {
         case "received":
-            return { [action.meta]: action.payload };
+            return { ...state, [action.meta]: action.payload };
         default:
             return state;
     }

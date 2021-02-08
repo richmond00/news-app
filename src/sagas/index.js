@@ -17,9 +17,10 @@ function* fetctRealTime(action) {
     yield put({ type: "received", meta: dataName, payload: data.results });
 }
 
-function* fetchMostViewed() {
-    const result = yield call(myFetch, API_URL_MOSTVIEWED);
-    yield put({ type: "received", payload: result });
+function* fetchMostViewed(action) {
+    const data = yield call(myFetch, API_URL_MOSTVIEWED);
+    const dataName = action.type.split("/")[0];
+    yield put({ type: "received", meta: dataName, payload: data.results });
 }
 
 function* actionWatcher() {
