@@ -1,9 +1,9 @@
 export const fetchRealTimeData = () => ({
-    type: "realtime/callApi",
+    type: "request",
     meta: "realtime",
 });
 
 export const fetchMostViewedData = () => ({
-    type: "mostviewed/callApi",
+    type: "request",
     meta: "mostviewed",
 });
