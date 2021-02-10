@@ -1,5 +1,5 @@
 .article {
-    padding: 1.5rem;
+    padding: 1.5rem 2.5rem;
     margin-bottom: 2rem;
     display: flex;
     border: 1px solid lightgray;
@@ -11,23 +11,31 @@
 
     &__image-wrapper {
         flex: 0 0 20%;
-        margin-left: 1rem;
+        margin-left: 2rem;
     }
 
-    &__category {
+    &__header {
         font-size: 1.2rem;
+        color: rgb(95, 99, 104);
+        margin-bottom: .5rem;
+    }
+
+    &__section {
         font-weight: 700;
-        color: red;
+        
         text-transform: uppercase;
+    }
+    &__time {
+        &::before {
+            content: " ∙ ";
+        }
     }
 
     &__title {
         font-size: 1.8rem;
         margin-bottom: .8rem;
     }
-    &__time {
-        margin-bottom: .8rem;
-    }
+   
     
     &__summary {
         font-size: 1.4rem;

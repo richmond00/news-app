@@ -12,13 +12,13 @@ const RealTime = () => {
     }, [dispatch]);
 
     return (
-        <div>
-            <h4>realtime</h4>
+        <section>
+            <h1 className="section-title">Real Time</h1>
             {realtime &&
                 realtime.map((article) => {
                     return <ArticleBox data={article} />;
                 })}
-        </div>
+        </section>
     );
 };
 

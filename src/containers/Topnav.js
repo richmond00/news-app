@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchInput from "../components/SearchInput";
 import LanguagePicker from "../components/LanguagePicker";
+import ThemePicker from "../components/ThemePicker";
 
 const Topnav = () => {
+    const [keyword, setKeyword] = useState("");
+
+    const handleChange = (e) => {
+        setKeyword(e.target.value);
+    };
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log("click");
+        setKeyword("");
+    };
+
     return (
         <header className="header">
             <nav className="topnav">
@@ -19,7 +32,13 @@ const Topnav = () => {
                         <LanguagePicker />
                     </li>
                     <li className="topnav__item">
-                        <SearchInput />
+                        <ThemePicker />
+                    </li>
+                    <li className="topnav__item">
+                        <SearchInput
+                            onChange={handleChange}
+                            onClick={handleClick}
+                        />
                     </li>
                 </ul>
             </nav>
