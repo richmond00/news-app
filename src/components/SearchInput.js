@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SearchInput = ({ onChange, onClick }) => {
+const SearchInput = ({ onChange, onClick, keyword }) => {
     return (
         <form action="">
             <input
@@ -9,6 +9,7 @@ const SearchInput = ({ onChange, onClick }) => {
                 className="search__input"
                 placeholder="search..."
                 onChange={onChange}
+                value={keyword}
             />
             <button type="submit" onClick={onClick}>
                 submit
@@ -20,6 +21,7 @@ const SearchInput = ({ onChange, onClick }) => {
 SearchInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     onClick: PropTypes.func.isRequired,
+    keyword: PropTypes.string.isRequired,
 };
 
 export default SearchInput;

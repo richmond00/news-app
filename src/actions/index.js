@@ -1,9 +1,15 @@
 export const fetchRealTimeData = () => ({
-    type: "request",
+    type: "realtime/request",
     meta: "realtime",
 });
 
 export const fetchMostViewedData = () => ({
-    type: "request",
+    type: "mostviewed/request",
     meta: "mostviewed",
+});
+
+export const fetchSearchResult = (params) => ({
+    type: "search/request",
+    meta: "search",
+    payload: params,
 });
