@@ -34,10 +34,9 @@ const Realtime = () => {
     return (
         <section>
             <h1 className="section-title">Real Time</h1>
-            {realtime &&
-                realtime.map((article) => {
-                    return <ArticleBox key={article.id} data={article} />;
-                })}
+            {realtime.map((article) => (
+                <ArticleBox key={article.id} data={article} />
+            ))}
         </section>
     );
 };

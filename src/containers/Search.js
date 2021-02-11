@@ -21,9 +21,7 @@ const searchSelector = createSelector(
 );
 
 const Search = () => {
-    console.log("search!");
     const search = useSelector(searchSelector);
-    console.log("data", search);
 
     return (
         <div>

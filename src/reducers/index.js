@@ -8,6 +8,7 @@ const initialDisplayState = {
 const initialArticleState = {
     realtime: [],
     mostviewed: [],
+    search: [],
 };
 
 const displayReducer = (state = initialDisplayState, action) => {
@@ -29,7 +30,9 @@ const displayReducer = (state = initialDisplayState, action) => {
 
 const articleReducer = (state = initialArticleState, action) => {
     switch (action.type) {
-        case "request":
+        case "realtime/request":
+        case "mostviewed/request":
+        case "search/request":
             return { ...state, isLoading: true };
 
         case "receive":

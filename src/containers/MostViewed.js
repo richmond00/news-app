@@ -34,10 +34,9 @@ const Mostviewed = () => {
     return (
         <div>
             <h4>Most Viewed!</h4>
-            {mostviewed &&
-                mostviewed.map((article) => {
-                    return <ArticleBox key={article.id} data={article} />;
-                })}
+            {mostviewed.map((article) => (
+                <ArticleBox key={article.id} data={article} />
+            ))}
         </div>
     );
 };
