@@ -1,23 +1,34 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import SearchInput from "../components/SearchInput";
 import LanguagePicker from "../components/LanguagePicker";
 import ThemePicker from "../components/ThemePicker";
-import { fetchSearchResult } from "../actions";
+import { fetchSearchResult, pickLanguage, pickTheme } from "../actions";
 
 const Topnav = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
+    const display = useSelector((state) => state.display);
     const [keyword, setKeyword] = useState("");
 
-    const handleChange = (e) => {
+    const handleLanguageClick = (e) => {
+        dispatch(pickLanguage(e.target.value));
+    };
+
+    const handleThemeClick = (e) => {
+        dispatch(pickTheme(e.target.value));
+    };
+
+    const handleSearchInputChange = (e) => {
         setKeyword(e.target.value);
     };
 
-    const handleClick = (e) => {
+    const handleSearchInputClick = (e) => {
         e.preventDefault();
         if (!keyword) return;
         dispatch(fetchSearchResult(keyword));
+        history.push("/search");
     };
 
     return (
@@ -32,15 +43,21 @@ const Topnav = () => {
                         <Link to="mostviewed">Most Viewed</Link>
                     </li>
                     <li className="topnav__item">
-                        <LanguagePicker />
+                        <LanguagePicker
+                            onClick={handleLanguageClick}
+                            language={display.language}
+                        />
                     </li>
                     <li className="topnav__item">
-                        <ThemePicker />
+                        <ThemePicker
+                            onClick={handleThemeClick}
+                            theme={display.theme}
+                        />
                     </li>
                     <li className="topnav__item">
                         <SearchInput
-                            onChange={handleChange}
-                            onClick={handleClick}
+                            onChange={handleSearchInputChange}
+                            onClick={handleSearchInputClick}
                             keyword={keyword}
                         />
                     </li>

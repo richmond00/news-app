@@ -1,13 +1,37 @@
 import React from "react";
-/**
-mostviewed: data.results
-realtime: data.results
-search: data.response.docs
- */
+import { useSelector } from "react-redux";
+import { createSelector } from "reselect";
+import ArticleBox from "../components/ArticleBox";
+
+const searchRemapper = (search) => {
+    return search.map((elem, index) => {
+        return {
+            section: elem.section_name,
+            title: elem.headline.main,
+            abstract: elem.abstract,
+            id: index,
+            updated: elem.pub_date,
+        };
+    });
+};
+
+const searchSelector = createSelector(
+    (state) => state.article.search,
+    searchRemapper
+);
+
 const Search = () => {
+    console.log("search!");
+    const search = useSelector(searchSelector);
+    console.log("data", search);
+
     return (
         <div>
-            <h4>Search</h4>
+            <h4>Search Result: </h4>
+            {search &&
+                search.map((article) => {
+                    return <ArticleBox key={article.id} data={article} />;
+                })}
         </div>
     );
 };

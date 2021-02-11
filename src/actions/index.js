@@ -13,3 +13,13 @@ export const fetchSearchResult = (params) => ({
     meta: "search",
     payload: params,
 });
+
+export const pickLanguage = (language) => ({
+    type: "topnav/pickLanguage",
+    payload: language,
+});
+
+export const pickTheme = (theme) => ({
+    type: "topnav/pickTheme",
+    payload: theme,
+});

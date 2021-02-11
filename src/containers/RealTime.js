@@ -1,11 +1,31 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { createSelector } from "reselect";
 import { fetchRealTimeData } from "../actions";
 import ArticleBox from "../components/ArticleBox";
 
-const RealTime = () => {
+const realtimeRemapper = (realtime) => {
+    return realtime.map((elem, index) => {
+        const { section, title, abstract, multimedia } = elem;
+        return {
+            section,
+            title,
+            abstract,
+            media: multimedia,
+            id: index,
+            updated: elem.updated_date,
+        };
+    });
+};
+
+const realtimeSelector = createSelector(
+    (state) => state.article.realtime,
+    realtimeRemapper
+);
+
+const Realtime = () => {
     const dispatch = useDispatch();
-    const realtime = useSelector((state) => state.article.realtime);
+    const realtime = useSelector(realtimeSelector);
 
     useEffect(() => {
         dispatch(fetchRealTimeData());
@@ -16,10 +36,10 @@ const RealTime = () => {
             <h1 className="section-title">Real Time</h1>
             {realtime &&
                 realtime.map((article) => {
-                    return <ArticleBox data={article} />;
+                    return <ArticleBox key={article.id} data={article} />;
                 })}
         </section>
     );
 };
 
-export default RealTime;
+export default Realtime;

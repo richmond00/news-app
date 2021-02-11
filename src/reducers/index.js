@@ -1,6 +1,33 @@
 import { combineReducers } from "redux";
 
-const articleReducer = (state = {}, action) => {
+const initialDisplayState = {
+    language: "en",
+    theme: "light",
+};
+
+const initialArticleState = {
+    realtime: [],
+    mostviewed: [],
+};
+
+const displayReducer = (state = initialDisplayState, action) => {
+    switch (action.type) {
+        case "topnav/pickLanguage": {
+            const language = action.payload === "en" ? "kr" : "en";
+            return { ...state, language };
+        }
+
+        case "topnav/pickTheme": {
+            const theme = action.payload === "dark" ? "light" : "dark";
+            return { ...state, theme };
+        }
+
+        default:
+            return state;
+    }
+};
+
+const articleReducer = (state = initialArticleState, action) => {
     switch (action.type) {
         case "request":
             return { ...state, isLoading: true };
@@ -19,6 +46,7 @@ const articleReducer = (state = {}, action) => {
 
 const rootReducer = combineReducers({
     article: articleReducer,
+    display: displayReducer,
 });
 
 export default rootReducer;

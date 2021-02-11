@@ -16,4 +16,16 @@
         margin: 0 2rem 0 2rem;
         cursor: pointer;
     }
+
+    .btn-picker {
+        font-size: 1.6rem;
+        padding: 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+
+        &:focus {
+            outline: none;
+        }
+    }
 }

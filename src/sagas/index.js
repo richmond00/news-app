@@ -40,7 +40,8 @@ function* callSearchAPI(action) {
 }
 
 function* actionWatcher() {
-    yield takeLatest("request", callAPI);
+    yield takeLatest("realtime/request", callAPI);
+    yield takeLatest("mostviewed/request", callAPI);
     yield takeLatest("search/request", callSearchAPI);
 }
 

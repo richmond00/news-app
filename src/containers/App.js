@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Topnav from "./Topnav";
-import RealTime from "./RealTime";
-import MostViewed from "./MostViewed";
+import Realtime from "./Realtime";
+import Mostviewed from "./Mostviewed";
 import Search from "./Search";
 
 const App = () => {
@@ -11,8 +11,8 @@ const App = () => {
             <Topnav />
             <main className="contents">
                 <Switch>
-                    <Route path="/realtime" component={RealTime} />
-                    <Route path="/mostviewed" component={MostViewed} />
+                    <Route path="/realtime" component={Realtime} />
+                    <Route path="/mostviewed" component={Mostviewed} />
                     <Route path="/search" component={Search} />
                 </Switch>
             </main>
