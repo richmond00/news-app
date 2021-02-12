@@ -13,11 +13,22 @@
     }
 
     &__item {
+        text-transform: uppercase;
         margin: 0 2rem 0 2rem;
         cursor: pointer;
+
+        a:link,
+        a:visited {
+            color: var(--color-black);
+            text-decoration: none;
+        }
+        a:hover {
+            color: var(--color-blue);
+        }
     }
 
-    .btn-picker {
+    .btn {
+        width: 2.2rem;
         font-size: 1.6rem;
         padding: 0;
         border: none;

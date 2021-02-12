@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createSelector } from "reselect";
 import { fetchMostViewedData } from "../actions";
 import ArticleBox from "../components/ArticleBox";
+import { getStringByLanguage } from "../helpers/common";
 
 const mostviewedRemapper = (mostviewed) => {
     return mostviewed.map((elem) => {
@@ -26,18 +27,21 @@ const mostviewedSelector = createSelector(
 const Mostviewed = () => {
     const dispatch = useDispatch();
     const mostviewed = useSelector(mostviewedSelector);
+    const language = useSelector((state) => state.display.language);
 
     useEffect(() => {
         dispatch(fetchMostViewedData());
     }, [dispatch]);
 
     return (
-        <div>
-            <h4>Most Viewed!</h4>
+        <section className="section-mostviewed">
+            <h1 className="section-title">
+                {getStringByLanguage(language, "mostviewedTitle")}
+            </h1>
             {mostviewed.map((article) => (
                 <ArticleBox key={article.id} data={article} />
             ))}
-        </div>
+        </section>
     );
 };
 

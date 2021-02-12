@@ -10,7 +10,7 @@ const LanguagePicker = ({ onClick, language }) => {
     return (
         <div>
             <button
-                className="btn-picker"
+                className="btn btn-picker"
                 type="button"
                 onClick={onClick}
                 value={language}

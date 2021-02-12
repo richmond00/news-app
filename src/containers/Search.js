@@ -24,13 +24,12 @@ const Search = () => {
     const search = useSelector(searchSelector);
 
     return (
-        <div>
-            <h4>Search Result: </h4>
-            {search &&
-                search.map((article) => {
-                    return <ArticleBox key={article.id} data={article} />;
-                })}
-        </div>
+        <section className="section-search">
+            <h1 className="section-title">Search Result: </h1>
+            {search.map((article) => (
+                <ArticleBox key={article.id} data={article} />
+            ))}
+        </section>
     );
 };
 

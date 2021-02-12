@@ -5,11 +5,13 @@ import SearchInput from "../components/SearchInput";
 import LanguagePicker from "../components/LanguagePicker";
 import ThemePicker from "../components/ThemePicker";
 import { fetchSearchResult, pickLanguage, pickTheme } from "../actions";
+import { getStringByLanguage } from "../helpers/common";
 
 const Topnav = () => {
-    const history = useHistory();
     const dispatch = useDispatch();
-    const display = useSelector((state) => state.display);
+    const history = useHistory();
+    const language = useSelector((state) => state.display.language);
+    const theme = useSelector((state) => state.display.theme);
     const [keyword, setKeyword] = useState("");
 
     const handleLanguageClick = (e) => {
@@ -34,25 +36,26 @@ const Topnav = () => {
     return (
         <header className="header">
             <nav className="topnav">
-                <div className="topnav__logo">Logo</div>
+                <div className="topnav__logo">🏠</div>
                 <ul className="topnav__items">
                     <li className="topnav__item">
-                        <Link to="realtime">Real Time</Link>
+                        <Link to="realtime">
+                            {getStringByLanguage(language, "realtime")}
+                        </Link>
                     </li>
                     <li className="topnav__item">
-                        <Link to="mostviewed">Most Viewed</Link>
+                        <Link to="mostviewed">
+                            {getStringByLanguage(language, "mostviewed")}
+                        </Link>
                     </li>
                     <li className="topnav__item">
                         <LanguagePicker
                             onClick={handleLanguageClick}
-                            language={display.language}
+                            language={language}
                         />
                     </li>
                     <li className="topnav__item">
-                        <ThemePicker
-                            onClick={handleThemeClick}
-                            theme={display.theme}
-                        />
+                        <ThemePicker onClick={handleThemeClick} theme={theme} />
                     </li>
                     <li className="topnav__item">
                         <SearchInput

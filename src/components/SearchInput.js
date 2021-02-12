@@ -11,8 +11,8 @@ const SearchInput = ({ onChange, onClick, keyword }) => {
                 onChange={onChange}
                 value={keyword}
             />
-            <button type="submit" onClick={onClick}>
-                submit
+            <button type="submit" className="btn btn-search" onClick={onClick}>
+                🔍
             </button>
         </form>
     );
