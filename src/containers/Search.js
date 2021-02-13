@@ -5,7 +5,6 @@ import ArticleBox from "../components/ArticleBox";
 
 const searchRemapper = (search) => {
     return search.map((elem, index) => {
-        console.log(elem.multimedia);
         const imageUrl =
             elem.multimedia.length !== 0
                 ? `${process.env.ROOT_IMAGE_URL}/${elem.multimedia[38].url}`

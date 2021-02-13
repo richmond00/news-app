@@ -1,5 +1,18 @@
 export const myFunc = () => null;
 
+export const themes = {
+    light: {
+        header: "#fff",
+        main: "#fff",
+        color: "#000",
+    },
+    dark: {
+        header: "#242526",
+        main: "#18191a",
+        color: "#f5f6f7",
+    },
+};
+
 export const getStringByLanguage = (langauge, stringKey) => {
     const languageStrings = {
         en: {
