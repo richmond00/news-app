@@ -17,7 +17,7 @@ const realtimeRemapper = (realtime) => {
             section,
             title,
             abstract,
-            media: multimedia,
+            imageUrl: multimedia && multimedia[1].url,
             id: index,
             updated: elem.updated_date,
         };

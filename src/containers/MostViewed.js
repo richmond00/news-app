@@ -7,12 +7,15 @@ import { getStringByLanguage } from "../helpers/common";
 
 const mostviewedRemapper = (mostviewed) => {
     return mostviewed.map((elem) => {
-        const { section, title, abstract, media, id, updated } = elem;
+        const { section, title, abstract, id, updated } = elem;
+        const imageUrl =
+            elem.media[0] && elem.media[0]["media-metadata"][1].url;
+
         return {
             section,
             title,
             abstract,
-            media,
+            imageUrl,
             id,
             updated,
         };

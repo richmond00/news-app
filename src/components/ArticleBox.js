@@ -2,6 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const ArticleBox = ({ data }) => {
+    const image = data.imageUrl ? (
+        <img
+            className="article__image"
+            src={data.imageUrl}
+            alt="Article media"
+        />
+    ) : (
+        "No image available"
+    );
     return (
         <article className="article">
             <div className="article__text-wrapper">
@@ -12,15 +21,7 @@ const ArticleBox = ({ data }) => {
                 <h1 className="article__title">{data.title}</h1>
                 <div className="article__summary">{data.abstract}</div>
             </div>
-            <div className="article__image-wrapper">
-                {/* {data.media && (
-                    <img
-                        src={data.media[1].url}
-                        className="article__image"
-                        alt="Thumbmail"
-                    />
-                )} */}
-            </div>
+            <div className="article__image-wrapper">{image}</div>
         </article>
     );
 };
@@ -31,6 +32,7 @@ ArticleBox.defaultProps = {
         section: "",
         updated: "",
         abstract: "",
+        imageUrl: "",
     },
 };
 
@@ -40,7 +42,7 @@ ArticleBox.propTypes = {
         section: PropTypes.string.isRequired,
         updated: PropTypes.string.isRequired,
         abstract: PropTypes.string.isRequired,
-        media: PropTypes.arrayOf(Object),
+        imageUrl: PropTypes.string,
     }),
 };
 
