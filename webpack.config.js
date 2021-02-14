@@ -51,5 +51,16 @@ module.exports = {
         new webpack.BannerPlugin({ banner: new Date().toLocaleString() }),
         new ESLintPlugin(),
         new Dotenv(),
+        new webpack.DefinePlugin({
+            "process.env": {
+                API_KEY: JSON.stringify(process.env.API_KEY),
+                API_URL_REALTIME: JSON.stringify(process.env.API_URL_REALTIME),
+                API_URL_MOSTVIEWED: JSON.stringify(
+                    process.env.API_URL_MOSTVIEWED
+                ),
+                API_URL_SEARCH: JSON.stringify(process.env.API_URL_SEARCH),
+                ROOT_IMAGE_URL: JSON.stringify(process.env.ROOT_IMAGE_URL),
+            },
+        }),
     ],
 };
