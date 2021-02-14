@@ -1,8 +1,5 @@
 import { put, takeLatest, call, all, delay } from "redux-saga/effects";
 
-console.log("test". process.env.API_URL_REALTIME);
-console.log("test1", API_URL_REALTIME);
-
 const API_URL = {
     realtime: `${process.env.API_URL_REALTIME}`,
     mostviewed: `${process.env.API_URL_MOSTVIEWED}`,
