@@ -9,16 +9,23 @@ const ArticleBox = ({ data }) => {
             alt="Article media"
         />
     ) : (
-        "No image available"
+        <span className="article__no-image">No image available 🙁</span>
     );
     return (
         <article className="article">
             <div className="article__text-wrapper">
                 <div className="article__header">
                     <span className="article__section">{data.section}</span>
-                    <span className="article__time">{data.updated}</span>
+                    <span className="article__time">
+                        {new Date(data.updated).toLocaleString()}
+                    </span>
                 </div>
-                <h1 className="article__title">{data.title}</h1>
+                <h1 className="article__title">
+                    {" "}
+                    <a href={data.url} target="_blank" rel="noreferrer">
+                        {data.title}
+                    </a>
+                </h1>
                 <div className="article__summary">{data.abstract}</div>
             </div>
             <div className="article__image-wrapper">{image}</div>
@@ -33,6 +40,7 @@ ArticleBox.defaultProps = {
         updated: "",
         abstract: "",
         imageUrl: "",
+        url: "",
     },
 };
 
@@ -43,6 +51,7 @@ ArticleBox.propTypes = {
         updated: PropTypes.string.isRequired,
         abstract: PropTypes.string.isRequired,
         imageUrl: PropTypes.string,
+        url: PropTypes.string.isRequired,
     }),
 };
 

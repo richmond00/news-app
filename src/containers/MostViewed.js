@@ -30,11 +30,19 @@ const mostviewedSelector = createSelector(
 const Mostviewed = () => {
     const dispatch = useDispatch();
     const mostviewed = useSelector(mostviewedSelector);
+    const isLoading = useSelector((state) => state.article.isLoading);
     const language = useSelector((state) => state.display.language);
 
     useEffect(() => {
         dispatch(fetchMostViewedData());
     }, [dispatch]);
+
+    if (isLoading)
+        return (
+            <h1 className="loading">
+                {getStringByLanguage(language, "loading")}...
+            </h1>
+        );
 
     return (
         <section className="section-mostviewed">

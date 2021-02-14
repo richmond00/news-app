@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 
 const SearchInput = ({ onChange, onClick, keyword }) => {
     return (
-        <form action="">
+        <form className="topnav__form">
+            <button type="submit" className="btn btn-search" onClick={onClick}>
+                🔍
+            </button>
             <input
                 type="text"
                 className="search__input"
@@ -11,9 +14,6 @@ const SearchInput = ({ onChange, onClick, keyword }) => {
                 onChange={onChange}
                 value={keyword}
             />
-            <button type="submit" className="btn btn-search" onClick={onClick}>
-                🔍
-            </button>
         </form>
     );
 };

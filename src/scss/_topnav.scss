@@ -6,6 +6,15 @@
 
     &__logo {
         margin-right: auto;
+        cursor: pointer;
+        margin-left: 2rem;
+        &:hover {
+            background-color: var(--color-light-grey);
+            border-radius: 10px;
+        }
+        &.home {
+            font-size: 2rem;
+        }
     }
 
     &__items {
@@ -18,13 +27,13 @@
         margin: 0 2rem 0 2rem;
         cursor: pointer;
 
-        a:link,
-        a:visited {
-            color: inherit;
-            text-decoration: none;
-        }
         a:hover {
             color: var(--color-blue);
+            border-bottom: 1px solid var(--color-blue);
+        }
+
+        &-active {
+            font-weight: 600;
         }
     }
 
@@ -40,5 +49,26 @@
         &:focus {
             outline: none;
         }
+
+        &:hover {
+            background-color: var(--color-light-grey);
+            border-radius: 10px;
+        }
+    }
+}
+
+.search__input {
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 100px;
+    padding: .5rem 2rem;
+    color: inherit;
+    border: none;
+    margin-left: .5rem;
+    width: 80%;
+
+    &:focus {
+        outline: none;
+        background-color: var(--color-light-grey);
     }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import SearchInput from "../components/SearchInput";
 import LanguagePicker from "../components/LanguagePicker";
 import ThemePicker from "../components/ThemePicker";
@@ -35,17 +35,27 @@ const Topnav = () => {
 
     return (
         <nav className="topnav">
-            <div className="topnav__logo">🏠</div>
+            <div className="topnav__logo home">
+                <NavLink to="realtime" activeClassName="topnav__item-active">
+                    🏠
+                </NavLink>
+            </div>
             <ul className="topnav__items">
-                <li className="topnav__item">
-                    <Link to="realtime">
+                <li className="topnav__item menu">
+                    <NavLink
+                        to="realtime"
+                        activeClassName="topnav__item-active"
+                    >
                         {getStringByLanguage(language, "realtime")}
-                    </Link>
+                    </NavLink>
                 </li>
-                <li className="topnav__item">
-                    <Link to="mostviewed">
+                <li className="topnav__item menu">
+                    <NavLink
+                        to="mostviewed"
+                        activeClassName="topnav__item-active"
+                    >
                         {getStringByLanguage(language, "mostviewed")}
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="topnav__item">
                     <LanguagePicker

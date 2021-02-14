@@ -21,6 +21,8 @@ export const getStringByLanguage = (langauge, stringKey) => {
             realtimeTitle: "Real time articles",
             mostviewedTitle: "Most viewed articles",
             searchTitle: "Search results",
+            loading: "Loading",
+            searchResult: "search results",
         },
         kr: {
             realtime: "실시간",
@@ -28,6 +30,8 @@ export const getStringByLanguage = (langauge, stringKey) => {
             realtimeTitle: "실시간 속보",
             mostviewedTitle: "가장 많이 본 기사",
             searchTitle: "검색결과",
+            loading: "로딩 중입니다",
+            searchResult: "검색결과",
         },
     };
 

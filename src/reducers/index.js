@@ -8,7 +8,7 @@ const initialDisplayState = {
 const initialArticleState = {
     realtime: [],
     mostviewed: [],
-    search: [],
+    search: { keyword: "", data: [] },
 };
 
 const displayReducer = (state = initialDisplayState, action) => {

@@ -5,14 +5,9 @@ import { fetchRealTimeData } from "../actions";
 import ArticleBox from "../components/ArticleBox";
 import { getStringByLanguage } from "../helpers/common";
 
-/**
-mostivewed: media
-realtime: multimedia
-search: multimedia 
- */
 const realtimeRemapper = (realtime) => {
     return realtime.map((elem, index) => {
-        const { section, title, abstract, multimedia } = elem;
+        const { section, title, abstract, multimedia, url } = elem;
         return {
             section,
             title,
@@ -20,6 +15,7 @@ const realtimeRemapper = (realtime) => {
             imageUrl: multimedia && multimedia[1].url,
             id: index,
             updated: elem.updated_date,
+            url,
         };
     });
 };
@@ -32,11 +28,19 @@ const realtimeSelector = createSelector(
 const Realtime = () => {
     const dispatch = useDispatch();
     const realtime = useSelector(realtimeSelector);
+    const isLoading = useSelector((state) => state.article.isLoading);
     const language = useSelector((state) => state.display.language);
 
     useEffect(() => {
         dispatch(fetchRealTimeData());
     }, [dispatch]);
+
+    if (isLoading)
+        return (
+            <h1 className="loading">
+                {getStringByLanguage(language, "loading")}...
+            </h1>
+        );
 
     return (
         <section className="section-realtime">

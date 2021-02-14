@@ -1,9 +1,9 @@
-import { put, takeLatest, call, all } from "redux-saga/effects";
+import { put, takeLatest, call, all, delay } from "redux-saga/effects";
 
 const API_URL = {
-    realtime: `${process.env.API_URL}/api/realtime`,
-    mostviewed: `${process.env.API_URL}/api/mostviewed`,
-    search: `https://api.nytimes.com/svc/search/v2/articlesearch.json`,
+    realtime: `${process.env.API_URL_REALTIME}`,
+    mostviewed: `${process.env.API_URL_MOSTVIEWED}`,
+    search: `${process.env.API_URL_SEARCH}`,
 };
 
 const myFetch = async (url, params) => {
@@ -20,6 +20,7 @@ const myFetch = async (url, params) => {
 function* callAPI(action) {
     const params = { "api-key": process.env.API_KEY };
     const response = yield call(myFetch, API_URL[action.meta], params);
+    yield delay(250);
 
     yield put({
         type: "receive",
@@ -31,11 +32,12 @@ function* callAPI(action) {
 function* callSearchAPI(action) {
     const params = { "api-key": process.env.API_KEY, q: action.payload };
     const response = yield call(myFetch, API_URL[action.meta], params);
+    const payload = { data: response.response.docs, keyword: action.payload };
 
     yield put({
         type: "receive",
         meta: action.meta,
-        payload: response.response.docs,
+        payload,
     });
 }
 
