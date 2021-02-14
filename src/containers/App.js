@@ -32,6 +32,7 @@ const App = () => {
                     <Route path="/realtime" component={Realtime} />
                     <Route path="/mostviewed" component={Mostviewed} />
                     <Route path="/search" component={Search} />
+                    <Route path="/" component={Realtime} />
                 </Switch>
             </main>
         </div>
