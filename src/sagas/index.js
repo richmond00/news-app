@@ -20,7 +20,7 @@ const myFetch = async (url, params) => {
 function* callAPI(action) {
     const params = { "api-key": process.env.API_KEY };
     const response = yield call(myFetch, API_URL[action.meta], params);
-    yield delay(250);
+    yield delay(100);
 
     yield put({
         type: "receive",
