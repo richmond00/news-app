@@ -55,5 +55,4 @@ const Mostviewed = () => {
         </section>
     );
 };
-
 export default Mostviewed;

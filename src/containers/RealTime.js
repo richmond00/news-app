@@ -53,5 +53,4 @@ const Realtime = () => {
         </section>
     );
 };
-
 export default Realtime;
