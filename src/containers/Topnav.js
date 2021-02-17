@@ -13,6 +13,7 @@ const Topnav = () => {
     const language = useSelector((state) => state.display.language);
     const theme = useSelector((state) => state.display.theme);
     const [keyword, setKeyword] = useState("");
+    const [isActive, setIsActive] = useState(false);
 
     const handleLanguageClick = (e) => {
         dispatch(pickLanguage(e.target.value));
@@ -28,7 +29,15 @@ const Topnav = () => {
 
     const handleSearchInputClick = (e) => {
         e.preventDefault();
-        if (!keyword) return;
+
+        if (!isActive) {
+            setIsActive(!isActive);
+            return;
+        }
+        if (!keyword) {
+            setIsActive(!isActive);
+            return;
+        }
         dispatch(fetchSearchResult(keyword));
         history.push("/search");
     };
@@ -57,20 +66,21 @@ const Topnav = () => {
                         {getStringByLanguage(language, "mostviewed")}
                     </NavLink>
                 </li>
-                <li className="topnav__item">
+                <li className="topnav__item topnav__item-btn">
                     <LanguagePicker
                         onClick={handleLanguageClick}
                         language={language}
                     />
                 </li>
-                <li className="topnav__item">
+                <li className="topnav__item topnav__item-btn">
                     <ThemePicker onClick={handleThemeClick} theme={theme} />
                 </li>
-                <li className="topnav__item">
+                <li className="topnav__item topnav__item-btn">
                     <SearchInput
                         onChange={handleSearchInputChange}
                         onClick={handleSearchInputClick}
                         keyword={keyword}
+                        isActive={isActive}
                     />
                 </li>
             </ul>

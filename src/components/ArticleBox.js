@@ -11,6 +11,7 @@ const ArticleBox = ({ data }) => {
     ) : (
         <span className="article__no-image">No image available 🙁</span>
     );
+
     return (
         <article className="article">
             <div className="article__text-wrapper">
