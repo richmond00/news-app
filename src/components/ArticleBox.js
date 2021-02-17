@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { timeSince } from "../helpers/common";
 
 const ArticleBox = ({ data }) => {
+    const updatedTimestamp = data.updated;
     const image = data.imageUrl ? (
         <img
             className="article__image"
@@ -18,7 +20,8 @@ const ArticleBox = ({ data }) => {
                 <div className="article__header">
                     <span className="article__section">{data.section}</span>
                     <span className="article__time">
-                        {new Date(data.updated).toLocaleString()}
+                        {/* {new Date(data.updated).toLocaleString()} */}
+                        {`${timeSince(new Date(updatedTimestamp))} ago`}
                     </span>
                 </div>
                 <h1 className="article__title">

@@ -40,7 +40,7 @@ const Search = () => {
         );
     return (
         <section className="section-search">
-            <h1 className="section-title">{`"${keyword} " ${getStringByLanguage(
+            <h1 className="section-title">{`"${keyword}" ${getStringByLanguage(
                 language,
                 "searchResult"
             )}`}</h1>
